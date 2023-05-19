@@ -27,6 +27,7 @@ import com.example.spendwise.model.Data;
 
 import com.example.spendwise.services.DataService;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -244,34 +245,54 @@ public class DashboardFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
+        FirebaseRecyclerOptions<Data> optionsIncome =
+                new FirebaseRecyclerOptions.Builder<Data>()
+                        .setQuery(incomeDb, Data.class)
+                        .build();
+
+
         FirebaseRecyclerAdapter<Data, IncomeViewHolder> incomeAdapter=new FirebaseRecyclerAdapter<Data, IncomeViewHolder>(
-                Data.class,
-                R.layout.dashboard_income,
-                DashboardFragment.IncomeViewHolder.class,
-                incomeDb
+               optionsIncome
         ) {
+            @NonNull
             @Override
-            protected void populateViewHolder(IncomeViewHolder incomeViewHolder, Data data, int i) {
+            public IncomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull IncomeViewHolder incomeViewHolder, int position, @NonNull Data data) {
                 incomeViewHolder.setIncomeType(data.getType());
                 incomeViewHolder.setIncomeAmount(data.getAmount());
                 incomeViewHolder.setIncomeDate(data.getDate());
-
             }
         };
+
+
         recyclerIncome.setAdapter(incomeAdapter);
 
+
+        FirebaseRecyclerOptions<Data> optionsExpense =
+                new FirebaseRecyclerOptions.Builder<Data>()
+                        .setQuery(incomeDb, Data.class)
+                        .build();
         FirebaseRecyclerAdapter<Data, ExpenseViewHolder> expenseAdapter= new FirebaseRecyclerAdapter<Data, ExpenseViewHolder>(
-                Data.class,
-                R.layout.dashboard_expense,
-                DashboardFragment.ExpenseViewHolder.class,
-                expenseDb
+                optionsExpense
         ) {
+            @NonNull
             @Override
-            protected void populateViewHolder(ExpenseViewHolder expenseViewHolder, Data data, int i) {
+            public ExpenseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                return null;
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull ExpenseViewHolder expenseViewHolder, int position, @NonNull Data data) {
                 expenseViewHolder.setExpenseType(data.getType());
                 expenseViewHolder.setExpenseAmount(data.getAmount());
                 expenseViewHolder.setExpenseDate(data.getDate());
             }
+
+
         };
         recyclerExpense.setAdapter(expenseAdapter);
     }

@@ -160,7 +160,7 @@ public class DataService {
                 Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
-                ButtonAnimation.floatingButtonAnimation();
+                ButtonAnimation.floatingButtonAnimation(isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
             }
         });
 
