@@ -17,6 +17,7 @@ import com.example.spendwise.R;
 
 
 import com.example.spendwise.activities.HomeActivity;
+import com.example.spendwise.activities.LoginActivity;
 import com.example.spendwise.activities.RegisterActivity;
 import com.example.spendwise.activities.ResetPassword;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,9 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginService {
 
     public static void login(ProgressDialog progressDialog,
-                             FirebaseAuth firebaseAuth){
+                             FirebaseAuth firebaseAuth, LoginActivity loginActivity){
 
-        Activity loginActivity =new AppCompatActivity(R.layout.activity_login) ;
 
         Button loginButton=loginActivity.findViewById(R.id.btn_login);
         TextView forgotPasswordText=loginActivity.findViewById(R.id.forgot_password);

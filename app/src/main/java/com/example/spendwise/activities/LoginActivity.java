@@ -22,9 +22,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
 
-
-
-
         // if the user is authenticated
         if (firebaseAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -32,9 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Go to Login screen :
-
-        else
-            progressDialog = new ProgressDialog(this);
-        LoginService.login(progressDialog,firebaseAuth) ;
+        progressDialog = new ProgressDialog(this);
+        LoginService.login(progressDialog,firebaseAuth,this) ;
     }
 }
