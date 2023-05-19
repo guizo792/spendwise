@@ -26,8 +26,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginService {
 
-    public static void login(ProgressDialog mDialog,
-                             FirebaseAuth mAuth){
+    public static void login(ProgressDialog progressDialog,
+                             FirebaseAuth firebaseAuth){
 
         Activity loginActivity =new AppCompatActivity(R.layout.activity_login) ;
 
@@ -55,22 +55,22 @@ public class LoginService {
                     return;
                 }
 
-                mDialog.setMessage("Processing");
-                mDialog.show();
+                progressDialog.setMessage("Processing");
+                progressDialog.show();
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful())
                         {
-                            mDialog.dismiss();
+                            progressDialog.dismiss();
                             Toast.makeText(loginActivity.getApplicationContext(), "Login Successful!",Toast.LENGTH_SHORT).show();
                             loginActivity.startActivity(new Intent((loginActivity.getApplicationContext()), HomeActivity.class));
                             loginActivity.finish();
                         }
                         else{
-                            mDialog.dismiss();
+                            progressDialog.dismiss();
                             Toast.makeText(loginActivity.getApplicationContext(), "Login Failed!",Toast.LENGTH_SHORT).show();
                         }
                     }
