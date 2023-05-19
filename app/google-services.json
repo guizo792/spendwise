@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "552481913960",
+    "firebase_url": "https://spend-wise-87db7-default-rtdb.firebaseio.com",
+    "project_id": "spend-wise-87db7",
+    "storage_bucket": "spend-wise-87db7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552481913960:android:fbe77862a3e6b143d9cfdd",
+        "android_client_info": {
+          "package_name": "com.example.spendwise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552481913960-m9j2ebr7j02c4f6dlrcm28c55s64kvrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spendwise",
+            "certificate_hash": "7e585771a8155fac682960689fe9d427d92ff041"
+          }
+        },
+        {
+          "client_id": "552481913960-gbhak1rlg0jrjm1scrb76dtb7r29kgbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5WGeC3Q67KtuoozBWWCzHKgKXsXALPlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552481913960-gbhak1rlg0jrjm1scrb76dtb7r29kgbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
