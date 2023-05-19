@@ -200,8 +200,10 @@ public class ExpenseFragment extends Fragment {
                     }
                 };
 
-
         recyclerView.setAdapter(adapter);
+
+        adapter.startListening();
+
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{

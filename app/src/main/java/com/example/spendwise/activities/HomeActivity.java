@@ -49,10 +49,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
         mAuth=FirebaseAuth.getInstance();
         Toolbar toolbar=findViewById(R.id.my_toolbar);
-        toolbar.setTitle("Expense Manager");
+//        toolbar.setTitle("Expense Manager");
 //        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
 
         DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle= new ActionBarDrawerToggle

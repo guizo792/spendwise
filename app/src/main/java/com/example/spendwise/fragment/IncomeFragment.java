@@ -166,7 +166,6 @@ public class IncomeFragment extends Fragment {
                         .setQuery(incomeDB, Data.class)
                         .build();
 
-
         FirebaseRecyclerAdapter<Data, ViewHolderFragmentIncome> adapter = new FirebaseRecyclerAdapter<Data, ViewHolderFragmentIncome>(options) {
 
             @NonNull
@@ -187,8 +186,6 @@ public class IncomeFragment extends Fragment {
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
                         int adapterPosition = viewHolder.getAdapterPosition();
                         if (adapterPosition != RecyclerView.NO_POSITION) {
                             String post_key = getRef(adapterPosition).getKey();
@@ -201,11 +198,13 @@ public class IncomeFragment extends Fragment {
                         //updateDataItem();
                     }
                 });
-
             }
         };
 
         recyclerView.setAdapter(adapter);
+
+        adapter.startListening();
+
 
     }
 
