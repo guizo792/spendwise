@@ -28,13 +28,10 @@ public class DataService {
 
 
 
-    public static Fragment myFragment =new Fragment(
-            R.layout.fragment_dashboard);
+//    public static Fragment myFragment =new Fragment(
+//            R.layout.fragment_dashboard);
 
-    public static void insertIncomeData( DatabaseReference incomeDb,boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text){
-
-        Fragment myFragment =new Fragment(
-                R.layout.fragment_dashboard);
+    public static void insertIncomeData( Fragment myFragment,DatabaseReference incomeDb,boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text){
 
         AlertDialog.Builder mydialog= new AlertDialog.Builder(myFragment.getActivity());
         LayoutInflater inflater=LayoutInflater.from(myFragment.getActivity());
@@ -94,14 +91,14 @@ public class DataService {
                 Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
-                ButtonAnimation.floatingButtonAnimation(isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
+                ButtonAnimation.floatingButtonAnimation( myFragment, isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
             }
         });
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ButtonAnimation.floatingButtonAnimation(isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
+                ButtonAnimation.floatingButtonAnimation(myFragment, isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
                 dialog.dismiss();
             }
         });
@@ -110,7 +107,7 @@ public class DataService {
 
 
 
-    public static void insertExpenseData(DatabaseReference expenseDb, boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text ){
+    public static void insertExpenseData(Fragment myFragment , DatabaseReference expenseDb, boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text ){
 
         AlertDialog.Builder mydialog=new AlertDialog.Builder(myFragment.getActivity());
         LayoutInflater inflater=LayoutInflater.from(myFragment.getActivity());
@@ -160,7 +157,7 @@ public class DataService {
                 Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
-                ButtonAnimation.floatingButtonAnimation(isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
+                ButtonAnimation.floatingButtonAnimation(myFragment, isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
             }
         });
 
@@ -168,7 +165,7 @@ public class DataService {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                ButtonAnimation.floatingButtonAnimation(isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
+                ButtonAnimation.floatingButtonAnimation(myFragment, isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
             }
         });
         dialog.show();

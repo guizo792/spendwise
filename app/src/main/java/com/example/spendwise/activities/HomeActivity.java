@@ -22,6 +22,8 @@ import com.example.spendwise.R;
 import com.example.spendwise.fragment.AccountFragment;
 import com.example.spendwise.fragment.DashboardFragment;
 import com.example.spendwise.fragment.ExpenseFragment;
+import com.example.spendwise.fragment.IncomeFragment;
+import com.example.spendwise.fragment.StatsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,16 +36,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //Fragment
 
     private DashboardFragment dashboardFragment;
-//    private IncomeFragment incomeFragment;
-//    private ExpenseFragment expenseFragment;
-//    private StatsFragment statsFragment;
+    private IncomeFragment incomeFragment;
+    private ExpenseFragment expenseFragment;
+    private StatsFragment statsFragment;
 
     private FirebaseAuth mAuth;
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
 
 
     @Override
@@ -53,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mAuth=FirebaseAuth.getInstance();
         Toolbar toolbar=findViewById(R.id.my_toolbar);
         toolbar.setTitle("Expense Manager");
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 

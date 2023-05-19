@@ -15,10 +15,10 @@ public  class ButtonAnimation {
     private static Animation fadeClose;
 
 
-    private static Fragment myFragment =new Fragment(
-            R.layout.fragment_dashboard);
+//    private static Fragment myFragment =new Fragment(
+//            R.layout.fragment_dashboard);
 
-    public static void floatingButtonAnimation(boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text){
+    public static void floatingButtonAnimation(Fragment myFragment, boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text){
 
         fadeOpen= AnimationUtils.loadAnimation(myFragment.getActivity(),R.anim.fade_open);
         fadeClose=AnimationUtils.loadAnimation(myFragment.getActivity(),R.anim.fade_close);
