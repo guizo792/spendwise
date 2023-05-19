@@ -21,9 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.spendwise.Anim.ButtonAnimation;
 import com.example.spendwise.R;
 import com.example.spendwise.model.Data;
 
+import com.example.spendwise.services.DataService;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -125,7 +127,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addData();
-                floatingButtonAnimation();
+                ButtonAnimation.floatingButtonAnimation(isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
             }
         });
 
@@ -215,175 +217,27 @@ public class DashboardFragment extends Fragment {
     }
     //Floating button animation
 
-    private void floatingButtonAnimation(){
-        if(isOpen){
-            fab_plus.startAnimation(fadeClose);
-            fab_minus.startAnimation(fadeClose);
-            fab_plus.setClickable(false);
-            fab_minus.setClickable(false);
-            fab_plus_text.startAnimation(fadeClose);
-            fab_minus_text.startAnimation(fadeClose);
-            fab_plus_text.setClickable(false);
-            fab_minus_text.setClickable(false);
-        }
-        else{
-            fab_plus.startAnimation(fadeOpen);
-            fab_minus.startAnimation(fadeOpen);
-            fab_plus.setClickable(true);
-            fab_minus.setClickable(true);
-            fab_minus_text.startAnimation(fadeOpen);
-            fab_plus_text.startAnimation(fadeOpen);
-            fab_plus_text.setClickable(true);
-            fab_minus_text.setClickable(true);
-        }
-        isOpen=!isOpen;
 
-    }
 
     private void addData(){
         //Fab Button Income
         fab_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertIncomeData();
+                DataService.insertIncomeData(incomeDb, isOpen, fab_plus,  fab_minus,  fab_plus_text, fab_minus_text);
+
             }
         });
 
         fab_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertExpenseData();
+                DataService.insertExpenseData(expenseDb,isOpen, fab_plus,  fab_minus,  fab_plus_text, fab_minus_text);
             }
         });
     }
 
-    public void insertIncomeData(){
-        AlertDialog.Builder mydialog= new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater=LayoutInflater.from(getActivity());
 
-        View myview=inflater.inflate(R.layout.custom_layout_for_insertdata, null);
-        mydialog.setView(myview);
-        final AlertDialog dialog=mydialog.create();
-        dialog.setCancelable(false);
-
-        EditText edtamount=myview.findViewById(R.id.amount);
-        EditText edtType=myview.findViewById(R.id.type_edt);
-        EditText edtNote=myview.findViewById(R.id.note_edt);
-
-        Button saveBtn=myview.findViewById(R.id.btnSave);
-        Button cancelBtn=myview.findViewById(R.id.btnCancel);
-
-
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String type=edtType.getText().toString().trim();
-                String amount=edtamount.getText().toString().trim();
-                String note=edtNote.getText().toString().trim();
-
-                if(TextUtils.isEmpty(type)){
-                    edtType.setError("Please Enter A Type");
-                    return;
-                }
-                if(TextUtils.isEmpty(amount)){
-                    edtamount.setError("Please Enter Amount");
-                    return;
-                }
-                if(TextUtils.isEmpty(note)){
-                    edtNote.setError("Please Enter A Note");
-                    return;
-                }
-                int amountInInt=Integer.parseInt(amount);
-
-                //Create random ID inside database
-                String id= incomeDb.push().getKey();
-
-                String mDate= DateFormat.getDateInstance().format(new Date());
-
-                Data data=new Data(amountInInt, type, note, id, mDate);
-
-                incomeDb.child(id).setValue(data);
-
-                Toast.makeText(getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
-
-                dialog.dismiss();
-                floatingButtonAnimation();
-            }
-        });
-
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                floatingButtonAnimation();
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
-
-
-    public void insertExpenseData(){
-        AlertDialog.Builder mydialog=new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater=LayoutInflater.from(getActivity());
-
-        View myview=inflater.inflate(R.layout.custom_layout_for_insertdata, null);
-        mydialog.setView(myview);
-
-        final AlertDialog dialog=mydialog.create();
-        dialog.setCancelable(false);
-        EditText edtamount=myview.findViewById(R.id.amount);
-        EditText edttype=myview.findViewById(R.id.type_edt);
-        EditText edtnote=myview.findViewById(R.id.note_edt);
-
-        Button saveBtn=myview.findViewById(R.id.btnSave);
-        Button cancelBtn=myview.findViewById(R.id.btnCancel);
-
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String amount=edtamount.getText().toString().trim();
-                String type=edttype.getText().toString().trim();
-                String note=edtnote.getText().toString().trim();
-
-                if(TextUtils.isEmpty(type)){
-                    edttype.setError("Please Enter A Type");
-                    return;
-                }
-                if(TextUtils.isEmpty(amount)){
-                    edtamount.setError("Please Enter Amount");
-                    return;
-                }
-                if(TextUtils.isEmpty(note)){
-                    edtnote.setError("Please Enter A Note");
-                    return;
-                }
-                int amountInInt= Integer.parseInt(amount);
-
-                //Create random ID inside database
-                String id= expenseDb.push().getKey();
-
-                String mDate= DateFormat.getDateInstance().format(new Date());
-
-                Data data=new Data(amountInInt, type, note, id, mDate);
-
-                expenseDb.child(id).setValue(data);
-
-                Toast.makeText(getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
-
-                dialog.dismiss();
-                floatingButtonAnimation();
-            }
-        });
-
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                floatingButtonAnimation();
-            }
-        });
-        dialog.show();
-    }
 
 
     @Override
