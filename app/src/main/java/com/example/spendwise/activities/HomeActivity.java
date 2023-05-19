@@ -19,7 +19,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.spendwise.R;
+import com.example.spendwise.fragment.AccountFragment;
 import com.example.spendwise.fragment.DashboardFragment;
+import com.example.spendwise.fragment.ExpenseFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
