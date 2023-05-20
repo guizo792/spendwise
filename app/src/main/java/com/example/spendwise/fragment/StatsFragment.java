@@ -146,12 +146,13 @@ public class StatsFragment extends Fragment {
                     Date date = null;
                     try {
                         date = format.parse(data.getDate());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            DateWiseExpense.put(date,DateWiseExpense.getOrDefault(date,0)+data.getAmount());
+                        }
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        DateWiseExpense.put(date,DateWiseExpense.getOrDefault(date,0)+data.getAmount());
-                    }
+
                 }
             }
 

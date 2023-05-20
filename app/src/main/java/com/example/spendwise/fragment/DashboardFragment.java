@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.example.spendwise.Anim.ButtonAnimation;
 import com.example.spendwise.R;
+import com.example.spendwise.Views.ExpenseViewHolder;
+import com.example.spendwise.Views.IncomeViewHolder;
 import com.example.spendwise.model.Data;
 import com.example.spendwise.services.DataService;
 import com.firebase.client.Firebase;
@@ -296,61 +298,6 @@ public class DashboardFragment extends Fragment {
 
     }
 
-    // For income Data
 
-    public static class IncomeViewHolder extends RecyclerView.ViewHolder{
-        View mIncomeView;
-        public IncomeViewHolder(@NonNull View itemView) {
-            super(itemView);
-            mIncomeView=itemView;
-        }
 
-        public void setIncomeType(String type){
-            TextView mtype=mIncomeView.findViewById(R.id.type_Income_ds);
-            Log.i("TYPE", type);
-            mtype.setText(type);
-        }
-
-        public void setIncomeAmount(int amount){
-            TextView mAmount=mIncomeView.findViewById(R.id.amount_Income_ds);
-            String strAmount=String.valueOf(amount);
-            Log.i("AMOUNT", strAmount);
-            mAmount.setText(strAmount);
-        }
-
-        public void setIncomeDate(String date){
-            TextView mDate=mIncomeView.findViewById(R.id.date_Income_ds);
-            Log.i("DATE", date);
-            mDate.setText(date);
-        }
-
-    }
-
-    // For expense Data
-
-    public static class ExpenseViewHolder extends  RecyclerView.ViewHolder{
-
-        View mExpenseView;
-        public ExpenseViewHolder(@NonNull View itemView) {
-            super(itemView);
-            mExpenseView=itemView;
-        }
-
-        public void setExpenseType(String type){
-            TextView mtype=mExpenseView.findViewById(R.id.type_Expense_ds);
-            mtype.setText(type);
-        }
-
-        public void setExpenseAmount(int amount){
-            TextView mAmount=mExpenseView.findViewById(R.id.amount_Expense_ds);
-            String strAmount=String.valueOf(amount);
-            mAmount.setText(strAmount);
-
-        }
-
-        public void setExpenseDate(String date){
-            TextView mDate=mExpenseView.findViewById(R.id.date_Expense_ds);
-            mDate.setText(date);
-        }
-    }
 }

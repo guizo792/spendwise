@@ -172,7 +172,62 @@ public class DataService {
     }
 
 
+    public static void updateDataItem(Fragment fragment,String type, String note, float amount ,String post_key, DatabaseReference mExpenseDatabase){
 
+        AlertDialog.Builder mydialog = new AlertDialog.Builder(fragment.getActivity());
+        LayoutInflater inflater = LayoutInflater.from(fragment.getActivity());
+        View myview = inflater.inflate(R.layout.update_data_item, null);
+        mydialog.setView(myview);
+
+        EditText edtAmount = myview.findViewById(R.id.amount);
+        EditText edtNote = myview.findViewById(R.id.note_edt);
+        EditText edtType = myview.findViewById(R.id.type_edt);
+
+        edtType.setText(type);
+        edtType.setSelection(type.length());
+
+        edtNote.setText(note);
+        edtNote.setSelection(note.length());
+
+        edtAmount.setText(String.valueOf(amount));
+        edtAmount.setSelection(String.valueOf(amount).length());
+
+        EditText btnUpdate = myview.findViewById(R.id.btnUpdUpdate);
+        EditText btnDelete = myview.findViewById(R.id.btnUpdDelete);
+
+        final AlertDialog dialog = mydialog.create();
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String type = edtType.getText().toString().trim();
+                String note = edtNote.getText().toString().trim();
+
+                String stamount = String.valueOf(amount);
+                stamount = edtAmount.getText().toString().trim();
+                int intamount = Integer.parseInt(stamount);
+
+                String mDate = DateFormat.getDateInstance().format(new Date());
+
+                Data data = new Data(intamount, type, note, post_key, mDate);
+
+                mExpenseDatabase.child(post_key).setValue(data);
+
+                dialog.dismiss();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mExpenseDatabase.child(post_key).removeValue();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
 
 
 
