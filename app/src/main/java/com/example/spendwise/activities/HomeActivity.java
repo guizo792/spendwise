@@ -79,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         dashboardFragment=new DashboardFragment();
         incomeFragment=new IncomeFragment();
         expenseFragment=new ExpenseFragment();
-        statsFragment=new StatsFragment();
+        statsFragment= new StatsFragment();
 
         setFragment(dashboardFragment);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -176,7 +176,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.i("ITEM ID", Integer.toString(item.getItemId()));
+        //Log.i("ITEM ID", Integer.toString(item.getItemId()));
         displaySelectedListener(item.getItemId());
         return true;
     }

@@ -43,12 +43,12 @@ public class RegisterService {
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    EntredPassword.setError("Password cannot be empty.");
+                    EntredPassword.setError("Password cannot be empty!");
                     return;
                 }
                 Log.i("val", email);
                 Log.i("val", password);
-                mDialog.setMessage("Please wait while we process your data");
+                mDialog.setMessage("Please wait while we process your data...");
                 mDialog.show();
 
                 mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

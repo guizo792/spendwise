@@ -25,12 +25,6 @@ public class DataService {
 
 
 
-
-
-
-//    public static Fragment myFragment =new Fragment(
-//            R.layout.fragment_dashboard);
-
     public static void insertIncomeData( Fragment myFragment,DatabaseReference incomeDb,boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text){
 
         AlertDialog.Builder mydialog= new AlertDialog.Builder(myFragment.getActivity());
@@ -49,15 +43,9 @@ public class DataService {
         Button cancelBtn=myview.findViewById(R.id.btnCancel);
 
 
-
-
-
         saveBtn.setOnClickListener(new View.OnClickListener() {
 
-
-
-
-            @Override
+          @Override
             public void onClick(View v) {
                 String type=edtType.getText().toString().trim();
                 String amount=edtamount.getText().toString().trim();
@@ -88,7 +76,7 @@ public class DataService {
 
                 incomeDb.child(id).setValue(data);
 
-                Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully :)", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
                 ButtonAnimation.floatingButtonAnimation( myFragment, isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);

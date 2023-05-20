@@ -15,6 +15,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
+    //...
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,7 +31,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Go to Login screen :
-        progressDialog = new ProgressDialog(this);
-        LoginService.login(progressDialog,firebaseAuth,this) ;
+       else{
+            progressDialog = new ProgressDialog(this);
+            LoginService.login(progressDialog,firebaseAuth,this) ;
+        }
     }
 }

@@ -67,7 +67,7 @@ import com.github.mikephil.charting.charts.PieChart;
 
 public class StatsFragment extends Fragment {
 
-    // Firebase
+
     private FirebaseAuth mAuth;
     private DatabaseReference mIncomeDatabase;
     private DatabaseReference mExpenseDatabase;

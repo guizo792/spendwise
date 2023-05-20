@@ -55,7 +55,7 @@ public class LoginService {
                     return;
                 }
 
-                progressDialog.setMessage("Processing");
+                progressDialog.setMessage("Processing...");
                 progressDialog.show();
 
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
