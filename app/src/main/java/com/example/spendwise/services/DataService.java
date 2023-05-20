@@ -25,6 +25,12 @@ public class DataService {
 
 
 
+
+
+
+//    public static Fragment myFragment =new Fragment(
+//            R.layout.fragment_dashboard);
+
     public static void insertIncomeData( Fragment myFragment,DatabaseReference incomeDb,boolean isOpen,FloatingActionButton fab_plus, FloatingActionButton fab_minus, TextView fab_plus_text,TextView fab_minus_text){
 
         AlertDialog.Builder mydialog= new AlertDialog.Builder(myFragment.getActivity());
@@ -43,9 +49,15 @@ public class DataService {
         Button cancelBtn=myview.findViewById(R.id.btnCancel);
 
 
+
+
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
 
-          @Override
+
+
+
+            @Override
             public void onClick(View v) {
                 String type=edtType.getText().toString().trim();
                 String amount=edtamount.getText().toString().trim();
@@ -76,7 +88,7 @@ public class DataService {
 
                 incomeDb.child(id).setValue(data);
 
-                Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully :)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(myFragment.getActivity(), "Transaction Added Successfully!", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
                 ButtonAnimation.floatingButtonAnimation( myFragment, isOpen,fab_plus,fab_minus,fab_plus_text,fab_minus_text);
@@ -180,8 +192,8 @@ public class DataService {
         edtAmount.setText(String.valueOf(amount));
         edtAmount.setSelection(String.valueOf(amount).length());
 
-        EditText btnUpdate = myview.findViewById(R.id.btnUpdUpdate);
-        EditText btnDelete = myview.findViewById(R.id.btnUpdDelete);
+        Button btnUpdate = myview.findViewById(R.id.btnUpdUpdate);
+        Button btnDelete = myview.findViewById(R.id.btnUpdDelete);
 
         final AlertDialog dialog = mydialog.create();
 
@@ -192,9 +204,9 @@ public class DataService {
                 String type = edtType.getText().toString().trim();
                 String note = edtNote.getText().toString().trim();
 
-                String stamount = String.valueOf(amount);
+                String stamount;
                 stamount = edtAmount.getText().toString().trim();
-                int intamount = Integer.parseInt(stamount);
+                float intamount = Float.parseFloat(stamount);
 
                 String mDate = DateFormat.getDateInstance().format(new Date());
 

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.spendwise.R;
 import com.example.spendwise.Views.ViewHolderFragmentIncome;
 import com.example.spendwise.model.Data;
+import com.example.spendwise.services.DataService;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,12 +41,12 @@ import io.reactivex.rxjava3.annotations.NonNull;
  */
 public class IncomeFragment extends Fragment {
 
-
+    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -189,13 +190,15 @@ public class IncomeFragment extends Fragment {
                         int adapterPosition = viewHolder.getAdapterPosition();
                         if (adapterPosition != RecyclerView.NO_POSITION) {
                             String post_key = getRef(adapterPosition).getKey();
+                            type = model.getType();
+                            note = model.getNote();
+                            amount = model.getAmount();
+                            DataService.updateDataItem(IncomeFragment.this, type, note, amount, post_key, incomeDB);
                         }
 
-                        type = model.getType();
-                        note = model.getNote();
-                        amount = model.getAmount();
 
-                        //updateDataItem();
+
+//                        updateDataItem();
                     }
                 });
             }
@@ -207,70 +210,4 @@ public class IncomeFragment extends Fragment {
 
 
     }
-
-
-
-    private void updateDataItem() {
-
-        AlertDialog.Builder mydialog = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View myview = inflater.inflate(R.layout.update_data_item, null);
-        mydialog.setView(myview);
-
-        editAmount = myview.findViewById(R.id.amount);
-        editType = myview.findViewById(R.id.type_edt);
-        editNote = myview.findViewById(R.id.note_edt);
-
-        // Set data to edit text
-
-        editType.setText(type);
-        editType.setSelection(type.length());
-
-        editNote.setText(note);
-        editNote.setSelection(note.length());
-
-        editAmount.setText(String.valueOf(amount));
-        editAmount.setSelection(String.valueOf(amount).length());
-
-        btnUpdate = myview.findViewById(R.id.btnUpdUpdate);
-        btnDelete = myview.findViewById(R.id.btnUpdDelete);
-
-        final AlertDialog dialog = mydialog.create();
-
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                type = editType.getText().toString().trim();
-                note = editNote.getText().toString().trim();
-
-                String mdamount = String.valueOf(amount);
-                mdamount = editAmount.getText().toString().trim();
-
-                int myAmount = Integer.parseInt(mdamount);
-
-                String mDate = DateFormat.getDateInstance().format(new Date());
-
-                Data data = new Data(myAmount, type, note, post_key, mDate);
-
-                incomeDB.child(post_key).setValue(data);
-                dialog.dismiss();
-            }
-        });
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                incomeDB.child(post_key).removeValue();
-
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-
-    }
-
-
-
 }
