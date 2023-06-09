@@ -21,43 +21,43 @@ SpendWise is an Android application built using Java and Firebase, designed to h
 ## Demo
 
 <p align="center">
-  <img src="https://i.imgur.com/BWwyH2e.jpg" width="300" alt="Signup">
+  <img src="https://i.imgur.com/BWwyH2e.jpg" width="200" alt="Signup">
   <br>
   Signup
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/yDb6Kbf.jpg" width="300" alt="Login">
+  <img src="https://i.imgur.com/yDb6Kbf.jpg" width="200" alt="Login">
   <br>
   Login
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/fTtDjb2.jpg" width="300" alt="Home page">
+  <img src="https://i.imgur.com/fTtDjb2.jpg" width="200" alt="Home page">
   <br>
   Home page
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/ZjRsk3P.jpg" width="300" alt="Sidebar nav">
+  <img src="https://i.imgur.com/ZjRsk3P.jpg" width="200" alt="Sidebar nav">
   <br>
   Sidebar nav
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/xsn0rnT.jpg" width="300" alt="Incomes list">
+  <img src="https://i.imgur.com/xsn0rnT.jpg" width="200" alt="Incomes list">
   <br>
   Incomes list
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/r9Xked5.jpg" width="300" alt="Expenses list">
+  <img src="https://i.imgur.com/r9Xked5.jpg" width="200" alt="Expenses list">
   <br>
   Expenses list
 </p>
 
 <p align="center">
-  <img src="https://i.imgur.com/sGmhZk2.jpg" width="300" alt="Account details">
+  <img src="https://i.imgur.com/sGmhZk2.jpg" width="200" alt="Account details">
   <br>
   Account details
 </p>
