@@ -1,3 +1,4 @@
+
 # SpendWise
 #### Money Tracking Android App
 
@@ -16,3 +17,34 @@ SpendWise is an Android application built using Java and Firebase, designed to h
     - Connect the app to your Firebase project by following the Firebase setup instructions.
     - Build and run the app on an Android emulator or a physical device.
 
+## Demo
+
+![](https://i.imgur.com/BWwyH2e.jpg)
+
+Signup
+
+![](https://i.imgur.com/yDb6Kbf.jpg)
+
+Login
+
+![](https://i.imgur.com/nI2OLJd.jpg)
+
+Home page
+
+![](https://i.imgur.com/fTtDjb2.jpg)
+
+Sidebar nav
+
+![](https://i.imgur.com/ZjRsk3P.jpg)
+
+Incomes list
+
+![](https://i.imgur.com/xsn0rnT.jpg)
+
+Expenses list
+
+![](https://i.imgur.com/r9Xked5.jpg)
+
+Account details
+
+![](https://i.imgur.com/sGmhZk2.jpg)
